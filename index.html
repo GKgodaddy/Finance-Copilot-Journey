@@ -18,7 +18,7 @@
     }
     html,body{height:100%}
     body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;background:linear-gradient(180deg,var(--bg),#fff 30%);color:var(--ink);padding-top:var(--header-h)}
-    .container{max-width:1120px;margin:0 auto;padding:24px}
+    .container{max-width:1200px;margin:0 auto;padding:24px}
     header{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid #eee}
     .nav{display:flex;gap:10px;flex-wrap:nowrap;align-items:center;justify-content:space-between}
     .brand{display:flex;align-items:center;gap:10px;font-weight:800}
@@ -26,7 +26,7 @@
     .nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px}
     .nav a:hover{background:#f3f4f6;color:var(--ink)}
 
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;margin-top:18px}
+    .hero{display:grid;grid-template-columns:1fr;gap:24px;align-items:center;margin-top:18px}
     .hero h1{font-size:clamp(28px,3vw,40px);margin:0 0 8px 0}
     .hero p{color:var(--muted);margin:0}
 
@@ -38,29 +38,13 @@
     @media(max-width:1000px){.hero{grid-template-columns:1fr}.grid.cols-4{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:680px){.grid.cols-4,.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
 
-    .kpi{border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
-    .kpi .k{font-size:26px;font-weight:800}
-    .kpi .s{color:var(--muted);font-size:13px}
-    .kpi.p1{background:var(--p2)} /* Process */
-    .kpi.p2{background:var(--p1)} /* Decision */
-    .kpi.p3{background:var(--p3)} /* Knowledge */
-    .kpi.p4{background:var(--p4)} /* Analytics */
-
     section{margin-top:28px;padding:20px;background:#fff;border:1px solid #e5e7eb;border-radius:var(--radius);box-shadow:var(--shadow);scroll-margin-top:calc(var(--header-h) + 12px)}
     section h2{font-size:20px;margin:0 0 12px 0;display:flex;align-items:center;gap:10px;border-bottom:1px solid #eef2f7;padding-bottom:6px}
     .sub{color:var(--muted);margin:0 0 10px 0}
 
-    .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:#f3f4f6;border:1px solid #e5e7eb;font-size:12px;font-weight:700}
-
     .chip{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid #e5e7eb;background:#f9fafb}
     .chip.status.live{background:#ecfdf5;color:#065f46;border-color:#a7f3d0}
     .chip.status.pilot{background:#fffbeb;color:#92400e;border-color:#fde68a}
-
-    .demo{position:relative;overflow:hidden}
-    .video-ph{aspect-ratio:16/9;border-radius:10px;background:linear-gradient(135deg,var(--p5),var(--p2));display:grid;place-items:start;color:var(--ink);font-weight:800;text-align:left;padding:10px}
-    .badge-row{display:flex;gap:6px;flex-wrap:nowrap;margin-bottom:6px}
-    .play{position:absolute;inset:auto auto 10px 10px;background:#000;color:#fff;border:none;border-radius:999px;padding:8px 12px;font-weight:800;box-shadow:var(--shadow);cursor:pointer;text-decoration:none}
-    .play:visited{color:#fff}
 
     table{width:100%;border-collapse:collapse;font-size:13px}
     th,td{padding:8px 10px;border-bottom:1px solid #e5e7eb;vertical-align:top}
@@ -69,7 +53,43 @@
     footer{margin:36px 0;color:var(--muted);font-size:12px}
     .ghost{opacity:.6}
 
-    @media print{header{display:none !important} body{background:#fff;padding-top:0}.card,section{box-shadow:none;border:1px solid #ddd} .video-ph{background:#f5f5f5}}
+    /* Demo Layout */
+    .demo-card { display: grid; grid-template-columns: 300px 1fr; gap: 20px; 
+                 background: var(--card); border-radius: var(--radius); 
+                 box-shadow: var(--shadow); padding: 0; margin-bottom: 18px; overflow: hidden; }
+    
+    .demo-visual { position: relative; width: 300px; height: 180px; }
+    .demo-video { width: 100%; height: 100%; background: linear-gradient(135deg, var(--p5), var(--p2)); 
+                  display: grid; place-items: start; padding: 12px; font-weight: 800; 
+                  color: var(--ink); border-radius: var(--radius) 0 0 var(--radius); 
+                  position: relative; box-sizing: border-box; }
+    .demo-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .demo-play { position: absolute; bottom: 12px; left: 12px; background: #000; 
+                 color: #fff; border: none; border-radius: 999px; padding: 6px 12px; 
+                 font-weight: 800; font-size: 12px; text-decoration: none; z-index: 20;
+                 box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    .demo-play:visited { color: #fff; }
+    .demo-play:hover { background: #333; }
+    
+    .demo-content { padding: 20px; }
+    .demo-title { font-size: 18px; font-weight: 800; margin: 0 0 12px 0; }
+    .demo-problem, .demo-solution, .demo-impact { margin: 8px 0; font-size: 14px; line-height: 1.5; }
+    .demo-problem strong { color: #dc2626; }
+    .demo-solution strong { color: #059669; }
+    .demo-impact strong { color: #7c3aed; }
+
+    .function-group { margin-bottom: 36px; }
+    .function-title { font-size: 24px; font-weight: 800; margin: 0 0 8px 0; color: var(--ink); 
+                     padding: 12px 0; border-bottom: 2px solid #e5e7eb; }
+    .function-subtitle { color: var(--muted); margin: 0 0 20px 0; font-size: 14px; }
+
+    @media (max-width: 768px) {
+      .demo-card { grid-template-columns: 1fr; }
+      .demo-visual { width: 100%; height: 180px; }
+      .demo-video { border-radius: var(--radius) var(--radius) 0 0; }
+    }
+
+    @media print{header{display:none !important} body{background:#fff;padding-top:0}.card,section{box-shadow:none;border:1px solid #ddd}}
   </style>
 </head>
 <body>
@@ -81,60 +101,633 @@
       </div>
       <nav class="links" aria-label="Primary">
         <a href="#overview">Adoption Journey</a>
-        <a href="#advantages">Why Studio</a>
         <a href="#demos">Demos</a>
         <a href="#pipeline">Use Case Pipeline</a>
+        <a href="#advantages">Why Copilot Studio</a>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <!-- HERO -->
-    <section class="hero" id="overview" aria-labelledby="title" style="grid-template-columns:1fr">
+    <section class="hero" id="overview" aria-labelledby="title">
       <div>
         <h1 id="title" style="font-size:clamp(18px,1.8vw,22px);margin:0 0 8px 0">Finance Copilot Adoption Journey</h1>
       </div>
       <div class="card" style="margin-top:10px;padding:20px">
-  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:nowrap">
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:nowrap">
+          <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p3);color:var(--p3-ink);box-shadow:var(--shadow)">
+            <strong>Apr 2025</strong><br>
+            Productivity copilots<br>
+            <span style='font-size:12px;color:var(--ink)'>Summaries, Q&A, task prep, narrative drafting, and foundational copilots that improve day‑to‑day productivity for all Finance users.</span>
+          </div>
+          <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p2);color:var(--p2-ink);box-shadow:var(--shadow)">
+            <strong>May 2025</strong><br>
+            Role-assist copilots<br>
+            <span style='font-size:12px;color:var(--ink)'>Guided workflows, policy lookup, structured task sequences, and early role‑assist copilots that help users complete repeatable Finance processes consistently.</span>
+          </div>
+          <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p4);color:var(--p4-ink);box-shadow:var(--shadow)">
+            <strong>Jul 2025</strong><br>
+            Light integrations<br>
+            <span style='font-size:12px;color:var(--ink)'>SharePoint/Excel lookups, structured data retrieval, basic validations, and lightweight orchestration across documents and lists.</span>
+          </div>
+          <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p1);color:var(--p1-ink);box-shadow:var(--shadow)">
+            <strong>Aug 2025 ⭐</strong><br>
+            API-connected agents<br><span style='font-size:11px;color:var(--muted);font-weight:600'>⭐ Transitioned from standalone Copilot → Copilot Studio</span><br><br>
+            <span style='font-size:12px;color:var(--ink)'>Leveraging out‑of‑box integrations to SharePoint, Jira, and ServiceNow for richer context retrieval, structured actions, and early cross‑platform orchestration.</span>
+          </div>
+          <div style="min-width:160px;padding:12px;border-radius:10px;background:var(--p5);color:var(--p5-ink);box-shadow:var(--shadow)">
+            <strong>Oct 2025</strong><br>
+            MCP groundwork<br>
+            <span style='font-size:12px;color:var(--ink)'>Early MCP design + security prep, integration discussions, ESA/PIA alignment, and defining the tool‑contracts required before true end‑to‑end automation can be built.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p3);color:var(--p3-ink);box-shadow:var(--shadow)">
-      <strong>Apr 2025</strong><br>
-      Productivity copilots<br>
-      <span style='font-size:12px;color:var(--ink)'>Summaries, Q&A, task prep, narrative drafting, and foundational copilots that improve day‑to‑day productivity for all Finance users.</span>
-    </div>
+    <!-- DEMOS -->
+    <section id="demos">
+      <h2>Copilot Agents Demos</h2>
+      <p class="sub">Organized by Finance function, showing problem solved, AI solution, and cycle time impact.</p>
 
-    <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p2);color:var(--p2-ink);box-shadow:var(--shadow)">
-      <strong>May 2025</strong><br>
-      Role-assist copilots<br>
-      <span style='font-size:12px;color:var(--ink)'>Guided workflows, policy lookup, structured task sequences, and early role‑assist copilots that help users complete repeatable Finance processes consistently.</span>
-    </div>
+      <!-- ACCOUNTING -->
+      <div class="function-group">
+        <h3 class="function-title">Accounting</h3>
+        <p class="function-subtitle">Automating accounting research, memo generation, and coding processes</p>
 
-    <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p4);color:var(--p4-ink);box-shadow:var(--shadow)">
-      <strong>Jul 2025</strong><br>
-      Light integrations<br>
-      <span style='font-size:12px;color:var(--ink)'>SharePoint/Excel lookups, structured data retrieval, basic validations, and lightweight orchestration across documents and lists.</span>
-    </div>
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">Accounting</span>
+              </div>
+              <strong>Technical Accounting<br>Memo Automation</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Ec-M_b3dHX5FlvTHlYg79i8BTvj9uEj_p5YHe3SZ8QFFtg?e=gT5tPg" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Technical Accounting Memo Automation</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Creating technical accounting memos requires extensive GAAP research, precedent review, and detailed documentation to ensure compliance and audit readiness.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI drafts compliant memos, cites standards, produces consistent formatting, and generates audit-ready documentation.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Reduces manual research time, improves consistency, strengthens compliance accuracy, and accelerates quarterly close preparation.
+            </div>
+          </div>
+        </div>
 
-    <div style="min-width:150px;padding:12px;border-radius:10px;background:var(--p1);color:var(--p1-ink);box-shadow:var(--shadow)">
-      <strong>Aug 2025 ⭐</strong><br>
-      API-connected agents<br><span style='font-size:11px;color:var(--muted);font-weight:600'>⭐ Transitioned from standalone Copilot → Copilot Studio</span><br><br>
-      <span style='font-size:12px;color:var(--ink)'>Leveraging out‑of‑box integrations to SharePoint, Jira, and ServiceNow for richer context retrieval, structured actions, and early cross‑platform orchestration.</span>
-    </div>
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Decision</span>
+                <span class="chip">Accounting</span>
+              </div>
+              <strong>TLDML Coding<br>Companion</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EQ-Zmrcguf1DmzK3VUFKOBUBhA1sKJJnOBqigbthHyBQTg?e=FfzH0j" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">TLDML Coding Companion</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Setting up PFIDs for new TLDs requires digging through large FDM mapping files and validating revenue, cost, and balance-sheet accounts — repetitive, slow, and inconsistent.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> The agent analyzes a condensed mapping file, determines appropriate 24/13 accounts and PFID mappings, and replicates prior GoCast logic with far faster response time.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Speedier PFID setup, more consistent account selection, less manual filtering, and stronger reliability during heavy onboarding cycles.
+            </div>
+          </div>
+        </div>
 
-    <div style="min-width:160px;padding:12px;border-radius:10px;background:var(--p5);color:var(--p5-ink);box-shadow:var(--shadow)">
-      <strong>Oct 2025</strong><br>
-      MCP groundwork<br>
-      <span style='font-size:12px;color:var(--ink)'>Early MCP design + security prep, integration discussions, ESA/PIA alignment, and defining the tool‑contracts required before true end‑to‑end automation can be built.</span>
-    </div>
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Decision</span>
+                <span class="chip">Accounting</span>
+              </div>
+              <strong>Customer Credit<br>Monitoring Agent</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EUrvaanVxHhHm44fNSbIAvEBFAp6EUukkGeaLqxFXl0qzw?e=wpLwNj" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Customer Credit Monitoring Agent</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Risk monitoring requires constant review across multiple sources, leading to delays and inconsistent decisions.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI flags credit changes, generates risk assessments, and recommends actions.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Enables almost real-time risk identification, accelerates credit reviews, supports proactive risk management, and reduces bad debt exposure through earlier intervention.
+            </div>
+          </div>
+        </div>
+      </div>
 
-  </div>
-</div>
-</section>
-<!-- ADVANTAGES -->
+      <!-- PROCUREMENT -->
+      <div class="function-group">
+        <h3 class="function-title">Procurement</h3>
+        <p class="function-subtitle">Streamlining contract analysis, supplier management, and procurement forecasting</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Decision</span>
+                <span class="chip">Procurement</span>
+              </div>
+              <strong>Contract Term Summary<br>& Analyzer</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EZE3Ofqh1P9LoDQbIZB6CR0BrDyfMdaFKGYgu1Hs1jFgDg?e=YyhWrz" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Contract Term Summary & Analyzer</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Manual contract review is time-intensive and inconsistent in identifying risks.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI extracts key terms, flags risk clauses, and generates standardized summaries and risk scoring.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster contract processing, more consistent risk reviews, and improved negotiation readiness.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Analytics</span>
+                <span class="chip">Procurement</span>
+              </div>
+              <strong>Procurement Analyst<br>Copilot Agent</strong>
+            </div>
+            <a href="#" class="demo-play">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Procurement Analyst Copilot Agent</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Procurement analytics require manual data gathering and scattered reporting.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Aggregates spend data, identifies trends, and surfaces savings opportunities.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Shorter analytics cycles and more data-driven procurement decisions.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Analytics</span>
+                <span class="chip">Procurement</span>
+              </div>
+              <strong>Supplier Budgeting &<br>Forecasting Agent</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EdyR8h1uRL9Np0nINqyHXMwBb7cUS6rCHyPwcDv4DcSP-g?e=xyjjJp" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Supplier Budgeting & Forecasting Agent</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Supplier-level budgeting for 800+ suppliers requires heavy manual analysis of Workday spend, seasonality patterns, and multiple forecast methods.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Agent processes historical Workday supplier spend, applies predefined time-series models, and produces monthly supplier forecasts with confidence indicators.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> More consistent forecasting methodology, easier comparison vs prior budgets/actuals, and significantly reduced manual forecasting effort.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAX -->
+      <div class="function-group">
+        <h3 class="function-title">Tax</h3>
+        <p class="function-subtitle">Automating tax notice processing and compliance workflows</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Process</span>
+                <span class="chip">Tax</span>
+              </div>
+              <strong>Tax Notice<br>Tracker</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EYpR9boQHHZIlFjjDmjWuh0BRAF47SBWi9O8TlmEBrB3rQ?e=wmIKWH" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Tax Notice Tracker</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Routine tax notices require manual review, categorization, extraction, and routing.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI categorizes notices, extracts key fields, populates trackers, and routes based on urgency.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster processing, fewer manual errors, and improved compliance tracking.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARC -->
+      <div class="function-group">
+        <h3 class="function-title">ARC</h3>
+        <p class="function-subtitle">Supporting audit preparation, SOX compliance, and risk assessment processes</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Process</span>
+                <span class="chip">ARC</span>
+              </div>
+              <strong>Sox Process Flow<br>Generator</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EU9OCg95Zb1HtJoMx0q00U4B4nvRgrsL2diQ9m7Y_2dK7g?e=yMTk52" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Sox Process Flow Generator</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Creating SOX process flows is labor-intensive and requires constant updates.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI generates flows, maps controls, and updates documentation automatically.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster documentation and more consistent compliance mapping.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">ARC</span>
+              </div>
+              <strong>SOX Design Assessment<br>Agent</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EVs0ATn2r3NPiFzbJpouUxoB6QhahMVfeaksPXOQMxd-WA?e=QsC852" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">SOX Design Assessment Agent</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> ARC must manually prepare TOD documentation for hundreds of controls each year.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Agent ingests metadata, transcripts, and screenshots, then generates the seven design-factor table and narrative.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Provides a high-quality starting draft, supports consistency, and scales across the SOX control inventory.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">ARC</span>
+              </div>
+              <strong>IA Planning<br>Agent</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EZQfi7qsv09Ej3fs8QTl0tQBBwSViuOZOZ3NraWlsKP1eg?e=HjFQd6" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">IA Planning Agent</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Audit planning requires risk scoring, resource allocation, and multi-team schedule alignment.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI assists with risk-based planning, scheduling, and universe maintenance.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> More efficient planning and improved audit coverage.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IR -->
+      <div class="function-group">
+        <h3 class="function-title">IR</h3>
+        <p class="function-subtitle">Supporting investor relations research and analysis</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Analytics</span>
+                <span class="chip">IR</span>
+              </div>
+              <strong>The Bear<br>Interrogator</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EbOI0XR1CZBNnWcMDtSY5bABMVJOPeqK1JR-dMAoUPizdQ?e=qDULDB" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">The Bear Interrogator</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Preparing for investor calls and earnings requires anticipating tough questions, researching competitive positioning, and developing comprehensive responses to potential challenges.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI agent analyzes market sentiment, generates challenging questions based on current trends, provides research-backed responses, and helps prepare robust investor communication strategies.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> More comprehensive investor preparation, proactive issue identification, improved response quality, and enhanced investor confidence through better preparedness.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALL FINANCE -->
+      <div class="function-group">
+        <h3 class="function-title">All Finance</h3>
+        <p class="function-subtitle">Enterprise-wide solutions supporting multiple Finance functions</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">All Finance</span>
+              </div>
+              <strong>AI Role<br>Validator</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EdnziY2T3pJCg50N2bl6MfoB-SiY10020k4kUtIf4yozSQ?e=0946oC" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">AI Role Validator</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Teams need guidance on which AI tools are appropriate by role, function, and permissions.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Agent validates roles, recommends AI tools, and flags compliance constraints.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster adoption and reduced security risk.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">All Finance</span>
+              </div>
+              <strong>SDLC<br>Navigator</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Edt5irkoex9Atxdc2CEhPsMBLFqAW-oJJGb2bWqAXzcRRA?e=jCotOn" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">SDLC Navigator</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Finance teams struggle to navigate SDLC steps and approval requirements.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Copilot guides them through SDLC, approvals, and milestones.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Smoother project execution and less rework.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">All Finance</span>
+              </div>
+              <strong>SOX Control Owner<br>Copilot</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/ER7VoV0VqjtKoZohWMefl3MB7U4zHcmdTHjTrUX6-7rERg?e=5CNksM" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">SOX Control Owner Copilot</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> SOX control owners need consistent guidance for evidence, execution, and quarterly requirements.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI guides control execution and automates testing prep.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Reduced documentation effort and more consistent compliance.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTERPRISE WIDE -->
+      <div class="function-group">
+        <h3 class="function-title">Enterprise Wide / Cross-Functional</h3>
+        <p class="function-subtitle">Supporting company-wide Finance-related processes</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status pilot">Pilot</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">All GD</span>
+              </div>
+              <strong>Payroll<br>FAQ Bot</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Ec3KmAsuPRpKrA_MwGyz70sB-0m8QdENYwnohU5pOqOGyQ?e=OVIW9m" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Payroll FAQ Bot</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Payroll teams get overwhelmed by repetitive employee questions.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Bot answers FAQs instantly and escalates complex cases with context.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Reduced inquiries and improved employee experience.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Process</span>
+                <span class="chip">All GD</span>
+              </div>
+              <strong>Contractor Onboarding<br>in Workday</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EXdrql5Pd7FGgJIxHohSlKEB6qdiBZVBqiIMI0G358SuIQ?e=C6jmAR" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Contractor Onboarding in Workday</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Onboarding contractors involves multi-step Workday entries and coordination.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> Agent automates entries, validations, and workflows.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster onboarding and fewer errors.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Process</span>
+                <span class="chip">All GD</span>
+              </div>
+              <strong>SOC Report<br>Reviewer</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EVUUWB1yOBxAn-XnIOqPTAYBmrU3vBCVJmkEzcObPZtXnA?e=ZgF1wN" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">SOC Report Reviewer</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> SOC reports require heavy manual analysis and exception tracking.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI reads SOC reports, flags exceptions, and summarizes risk.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster vendor review cycles and standardized risk assessment.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPECIALIZED FUNCTIONS -->
+      <div class="function-group">
+        <h3 class="function-title">Specialized Functions</h3>
+        <p class="function-subtitle">Supporting Treasury, FDAT, and other specialized Finance areas</p>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Knowledge</span>
+                <span class="chip">Treasury</span>
+              </div>
+              <strong>Copilot Banking Requirements<br>Agent</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/ESfw6V26lThIhOo6qL9c1UMB77RvsSz5NuQE-OyD4uUn_A?e=PZUnHA" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">Copilot Banking Requirements Agent</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> Treasury banking requirements research involves complex regulation analysis, multi-jurisdictional compliance review, and coordination with legal teams, creating lengthy approval cycles.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI agent researches banking regulations, compiles compliance requirements, identifies potential issues, and generates comprehensive requirement summaries for Treasury decision-making.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster regulatory research, comprehensive compliance coverage, proactive risk identification, and accelerated banking relationship decisions.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <div class="demo-visual">
+            <div class="demo-video">
+              <div class="demo-badges">
+                <span class="chip status live">Live</span>
+                <span class="chip">Process</span>
+                <span class="chip">FDAT</span>
+              </div>
+              <strong>Demo of GBU Intake<br>Agent Interaction</strong>
+            </div>
+            <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Efw3RKSI-S5PtTTLpUNbrJ8BtocSuCVkMFVcpzr3sRLxdw?e=HFTfCC" class="demo-play" target="_blank" rel="noopener">▶ Play</a>
+          </div>
+          <div class="demo-content">
+            <h3 class="demo-title">GBU Intake Agent Interaction</h3>
+            <div class="demo-problem">
+              <strong>Problem:</strong> GBU (Global Business Unit) request intake requires manual triage, requirement gathering, resource assessment, and project prioritization across multiple stakeholders.
+            </div>
+            <div class="demo-solution">
+              <strong>Solution:</strong> AI agent manages intake conversations, captures requirements, assesses complexity, routes to appropriate teams, and maintains project tracking with automated status updates.
+            </div>
+            <div class="demo-impact">
+              <strong>Impact:</strong> Faster intake processing, improved requirement capture, better resource allocation, and enhanced stakeholder communication throughout project lifecycle.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section id="pipeline">
+      <h2>End‑to‑End Use Cases in the Copilot Studio Pipeline</h2>
+      <p class="sub">Large, cross‑system Finance workflows being designed for full automation and orchestration in Copilot Studio.</p>
+
+      <div class="grid cols-2">
+        <div class="card">
+          <strong>R&D Tax Credit Analyzer</strong>
+          <p class="sub">End‑to‑end automation for collecting Jira data, classifying engineering activities, validating evidence, preparing summaries, and generating audit‑ready reports.</p>
+        </div>
+
+        <div class="card">
+          <strong>Supplier Portal & Intake Automation</strong>
+          <p class="sub">Copilot‑led intake, validations, contract term extraction, routing, supplier setup, and integrations with SharePoint, Ironclad, and Workday (via MCP).</p>
+        </div>
+      </div>
+
+      <div class="grid cols-2" style="margin-top:18px">
+        <div class="card">
+          <strong>Software Capitalization Workflow</strong>
+          <p class="sub">Guided capitalization assessment, evidence collection, Jira/Workday data pulls, rule application, documentation, and monthly automation sequencing.</p>
+        </div>
+
+        <div class="card">
+          <strong>FP&A Forecasting Copilot</strong>
+          <p class="sub">Automated ingestion of forecast drivers, variance explanation drafting, scenario modeling, Workday Adaptive data pulls (via MCP), and orchestrated reporting cycles.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADVANTAGES -->
     <section id="advantages">
       <h2>Why standardize on Copilot Studio for Finance</h2>
       
-<p class="sub">Finance has already proven the value of standalone Copilot agents — but we're now ready for true end‑to‑end automation and orchestrated agent flows. Copilot Studio gives us the speed, governance, and enterprise control to build and launch these solutions the right way. Here are some key reasons for advocating for Copilot Studio as the platform for agent building.</p>
+      <p class="sub">Finance has already proven the value of standalone Copilot agents — but we're now ready for true end‑to‑end automation and orchestrated agent flows. Copilot Studio gives us the speed, governance, and enterprise control to build and launch these solutions the right way. Here are some key reasons for advocating for Copilot Studio as the platform for agent building.</p>
 
       <div class="card" style="margin-bottom:18px">
         <table>
@@ -184,7 +777,7 @@
             <tr>
               <td><strong>MCP &amp; future‑proofing</strong></td>
               <td>Studio is aligned with the MCP direction GoDaddy is adopting — enabling structured tool‑contracts for Workday, Jira, ServiceNow, and data‑heavy workflows.</td>
-              <td>Upcoming MCPs for Workday search, contract analysis, and FP&amp;A workflows will plug directly into Studio copilots.</td>
+              <td>Upcoming MCPs for Workday search, contract analysis, and FP&A workflows will plug directly into Studio copilots.</td>
             </tr>
             <tr>
               <td><strong>Multilingual execution</strong></td>
@@ -211,268 +804,7 @@
       </div>
     </section>
 
-    <!-- DEMOS -->
-    <section id="demos">
-      <h2>Copilot Agents Demos</h2>
-      <p class="sub">Status • Agent Type • Function.</p>
-
-      <!-- New Copilot Studio demos - moved to top -->
-      <div class="grid cols-3">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Knowledge</span><span class="chip">Accounting</span>
-            </div>
-            <strong>Technical Accounting Memo Automation</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Ec-M_b3dHX5FlvTHlYg79i8BTvj9uEj_p5YHe3SZ8QFFtg?e=gT5tPg" class="play" target="_blank" rel="noopener" aria-label="Play: Technical Accounting Memo Automation demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Analytics</span><span class="chip">FP&amp;A</span>
-            </div>
-            <strong>Procurement Budgeting &amp; Forecasting Copilot Agent</strong>
-          </div>
-          <a href="#" class="play" aria-label="Play: Procurement Budgeting &amp; Forecasting Copilot Agent demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Decision</span><span class="chip">Accounting</span>
-            </div>
-            <strong>TLDML Coding Companion</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EQ-Zmrcguf1DmzK3VUFKOBUBhA1sKJJnOBqigbthHyBQTg?e=FfzH0j" class="play" target="_blank" rel="noopener" aria-label="Play: TLDML Coding Companion demo">▶ Play</a>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:18px">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Process</span><span class="chip">Tax</span>
-            </div>
-            <strong>Tax Notice Automation</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EYpR9boQHHZIlFjjDmjWuh0BRAF47SBWi9O8TlmEBrB3rQ?e=wmIKWH" class="play" target="_blank" rel="noopener" aria-label="Play: Tax Notice Automation demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Decision</span><span class="chip">Procurement</span>
-            </div>
-            <strong>Contract Term Summary &amp; Analyzer</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EZE3Ofqh1P9LoDQbIZB6CR0BrDyfMdaFKGYgu1Hs1jFgDg?e=YyhWrz" class="play" target="_blank" rel="noopener" aria-label="Play: Contract Term Summary &amp; Analyzer demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Analytics</span><span class="chip">Procurement</span>
-            </div>
-            <strong>Procurement Analyst Copilot Agent</strong>
-          </div>
-          <a href="#" class="play" aria-label="Play: Procurement Analyst Copilot Agent demo">▶ Play</a>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:18px">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Analytics</span><span class="chip">IR</span>
-            </div>
-            <strong>The Bear Interrogator</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EbOI0XR1CZBNnWcMDtSY5bABMVJOPeqK1JR-dMAoUPizdQ?e=qDULDB" class="play" target="_blank" rel="noopener" aria-label="Play: The Bear Interrogator demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Analytics</span><span class="chip">Procurement</span>
-            </div>
-            <strong>Supplier Budgeting &amp; Forecasting Agent</strong>
-          </div>
-          <a href="#" class="play" aria-label="Play: Supplier Budgeting &amp; Forecasting Agent demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Process</span><span class="chip">ARC</span>
-            </div>
-            <strong>Sox Process Flow Generator</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EU9OCg95Zb1HtJoMx0q00U4B4nvRgrsL2diQ9m7Y_2dK7g?e=yMTk52" class="play" target="_blank" rel="noopener" aria-label="Play: Sox Process Flow Generator demo">▶ Play</a>
-        </div>
-      </div>
-
-      <!-- Original demos moved down -->
-      <div class="grid cols-3" style="margin-top:18px">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Knowledge</span><span class="chip">All Finance</span>
-            </div>
-            <strong>AI Role Validator</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EdnziY2T3pJCg50N2bl6MfoB-SiY10020k4kUtIf4yozSQ?e=0946oC" class="play" target="_blank" rel="noopener" aria-label="Play: AI Role Validator demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Process</span><span class="chip">All GD</span>
-            </div>
-            <strong>Contractor Onboarding in Workday</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EXdrql5Pd7FGgJIxHohSlKEB6qdiBZVBqiIMI0G358SuIQ?e=C6jmAR" class="play" target="_blank" rel="noopener" aria-label="Play: Contractor Onboarding in Workday demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Knowledge</span><span class="chip">Treasury</span>
-            </div>
-            <strong>Copilot Banking Requirements Agent</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/ESfw6V26lThIhOo6qL9c1UMB77RvsSz5NuQE-OyD4uUn_A?e=PZUnHA" class="play" target="_blank" rel="noopener" aria-label="Play: Copilot Banking Requirements Agent demo">▶ Play</a>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:18px">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Decision</span><span class="chip">Accounting</span>
-            </div>
-            <strong>Customer Credit Monitoring Agent</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EXpmk12K_ppJsEtPR_X_BkYBtb2tIFUnHZ6ApVSqe9XJkg?e=Y9W3SR" class="play" target="_blank" rel="noopener" aria-label="Play: Customer Credit Monitoring Agent demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Process</span><span class="chip">FDAT</span>
-            </div>
-            <strong>Demo of GBU Intake Agent Interaction</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Efw3RKSI-S5PtTTLpUNbrJ8BtocSuCVkMFVcpzr3sRLxdw?e=HFTfCC" class="play" target="_blank" rel="noopener" aria-label="Play: Demo of GBU Intake Agent Interaction demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Analytics</span><span class="chip">FDAT</span>
-            </div>
-            <strong>Product Launch Analyst</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EaNAJuAuJ8ZPqyjMt4I-i9EBjNjBe9Kujp--ktsPybJyKw?e=t3PBMF" class="play" target="_blank" rel="noopener" aria-label="Play: Product Launch Analyst demo">▶ Play</a>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:18px">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Knowledge</span><span class="chip">All Finance</span>
-            </div>
-            <strong>SDLC Navigator</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Edt5irkoex9Atxdc2CEhPsMBLFqAW-oJJGb2bWqAXzcRRA?e=jCotOn" class="play" target="_blank" rel="noopener" aria-label="Play: SDLC Navigator demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Process</span><span class="chip">All GD</span>
-            </div>
-            <strong>SOC Report Reviewer</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EVUUWB1yOBxAn-XnIOqPTAYBmrU3vBCVJmkEzcObPZtXnA?e=ZgF1wN" class="play" target="_blank" rel="noopener" aria-label="Play: SOC Report Reviewer demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Knowledge</span><span class="chip">All Finance</span>
-            </div>
-            <strong>SOX Control Owner Copilot</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/ER7VoV0VqjtKoZohWMefl3MB7U4zHcmdTHjTrUX6-7rERg?e=5CNksM" class="play" target="_blank" rel="noopener" aria-label="Play: SOX Control Owner Copilot demo">▶ Play</a>
-        </div>
-      </div>
-
-      <div class="grid cols-3" style="margin-top:18px">
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Knowledge</span><span class="chip">ARC</span>
-            </div>
-            <strong>SOX Design Assessment Agent</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EVs0ATn2r3NPiFzbJpouUxoB6QhahMVfeaksPXOQMxd-WA?e=QsC852" class="play" target="_blank" rel="noopener" aria-label="Play: SOX Design Assessment Agent demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status live">Live</span><span class="chip">Knowledge</span><span class="chip">ARC</span>
-            </div>
-            <strong>IA Planning Agent</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/EZQfi7qsv09Ej3fs8QTl0tQBBwSViuOZOZ3NraWlsKP1eg?e=HjFQd6" class="play" target="_blank" rel="noopener" aria-label="Play: IA Planning Agent demo">▶ Play</a>
-        </div>
-
-        <div class="card demo">
-          <div class="video-ph">
-            <div class="badge-row">
-              <span class="chip status pilot">Pilot</span><span class="chip">Knowledge</span><span class="chip">All GD</span>
-            </div>
-            <strong>Payroll FAQ Bot</strong>
-          </div>
-          <a href="https://secureservernet.sharepoint.com/:v:/s/Finance/Ec3KmAsuPRpKrA_MwGyz70sB-0m8QdENYwnohU5pOqOGyQ?e=OVIW9m" class="play" target="_blank" rel="noopener" aria-label="Play: Payroll FAQ Bot demo">▶ Play</a>
-        </div>
-      </div>
-    </section>
-
-<section id="pipeline">
-  <h2>End‑to‑End Use Cases in the Copilot Studio Pipeline</h2>
-  <p class="sub">Large, cross‑system Finance workflows being designed for full automation and orchestration in Copilot Studio.</p>
-
-  <div class="grid cols-2">
-    <div class="card">
-      <strong>R&D Tax Credit Analyzer</strong>
-      <p class="sub">End‑to‑end automation for collecting Jira data, classifying engineering activities, validating evidence, preparing summaries, and generating audit‑ready reports.</p>
-    </div>
-
-    <div class="card">
-      <strong>Supplier Portal & Intake Automation</strong>
-      <p class="sub">Copilot‑led intake, validations, contract term extraction, routing, supplier setup, and integrations with SharePoint, Ironclad, and Workday (via MCP).</p>
-    </div>
-  </div>
-
-  <div class="grid cols-2" style="margin-top:18px">
-    <div class="card">
-      <strong>Software Capitalization Workflow</strong>
-      <p class="sub">Guided capitalization assessment, evidence collection, Jira/Workday data pulls, rule application, documentation, and monthly automation sequencing.</p>
-    </div>
-
-    <div class="card">
-      <strong>FP&A Forecasting Copilot</strong>
-      <p class="sub">Automated ingestion of forecast drivers, variance explanation drafting, scenario modeling, Workday Adaptive data pulls (via MCP), and orchestrated reporting cycles.</p>
-    </div>
-  </div>
-</section>
-
-<footer>
+    <footer>
       <div>Finance Copilot Studio Gallery <span class="ghost">| Update counts/ROI as numbers evolve</span></div>
     </footer>
   </main>
